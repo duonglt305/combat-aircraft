@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Combat Aircraft</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="ready" class="active">
+            <div id="ready-header">
+                <h1>How to play <br> combat aircraft</h1>
+            </div>
+            <ul>
+                <li>1. The spaceship must follow the cursor whenever cursor in the game canvas.</li>
+                <li>2. The timer present the time lapsed.</li>
+                <li>3. The fuel counter show the remain fuel.</li>
+                <li>4. During the flight, the spaceship needs to destroy the asteroids and enemy spaceships that are presented in the space.</li>
+                <li>5. You can shoot pressing Space Bar.</li>
+                <li>6. If the spaceship hits a asteroid or another spaceship, you lose 10 points of fuel.</li>
+                <li>7. Enemy spaceship needs 1 shot to be destroyed, you will get 5 points for each enemy destroyed.</li>
+                <li>8. Asteroid needs 2 shots to be destroyed, you will get 10 points for each asteroid destroyed.</li>
+                <li>9. If you destroy a friendly spaceship, you lose 10 points.</li>
+                <li>10. During the flight, the spaceship needs to collect fuel in the space.</li>
+                <li>11. You can pause the game by pressing the "ctrl+p".</li>
+                <li>12. Go beyond all limits.</li>
+                <li>Battle in Space with Star Battle Championship...</li>
+            </ul>
+            <button class="btn btn-start" id="start">Start Game</button>
+        </div>
+        <div id="game-area" class="paused">
+            <div id="background">
+                <div class="bg-1">
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                </div>
+                <div class="bg-2">
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                </div>
+                <div class="bg-3">
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                </div>
+                <div class="bg-4">
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                </div>
+                <div class="bg-5">
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                    <div>
+                        <div class="planet"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="elements">
+                <div id="aircraft"></div>
+            </div>
+            <div class="red-layer"></div>
+            <div id="state">
+                <div class="header-top">
+                    <div class="header">
+                        <div class="stars">
+                            <div></div>
+                            <div id="score" class="font-control">0</div>
+                        </div>
+                        <img src="assets/images/logo.png" alt="">
+                        <div class="timers">
+                            <div id="timers" class="font-control">0</div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-bar">
+                    <div class="bar">
+                        <div class="fill" style="width: 50%;">
+                            <div class="background"></div>
+                        </div>
+                        <div id="fuels">20</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="over">            
+                <div id="ready-header">
+                    <h1>Game Over</h1>
+                </div>
+            <input type="text" id="name" placeholder="Enter your name">
+            <button class="btn btn-continue" disabled>Continue</button>
+        </div>
+        <div id="rank">
+            <div id="ready-header">
+                <h1>Ranking</h1>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-restart">Restart</button>
+        </div>
+    </div>
+    <script src="vendor/jquery-3.3.1.min.js"></script>
+    <script type="module" src="./assets/js/Game.js">
+    </script>
+</body>
+</html>

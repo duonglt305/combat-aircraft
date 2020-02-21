@@ -1,0 +1,593 @@
+:root{
+    --main: rgb(238,81,0);
+    --light: #ffffff;
+}
+*{
+    font-family: 'Orbitron', sans-serif;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    user-select: none;
+    outline: none;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    z-index: -1;
+}
+.container{
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+}
+.container > div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#ready{
+    padding: 50px 0;
+    background: url("../images/bg.jpg");
+    background-size: 100% 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    visibility: hidden;
+    z-index: 99;
+}
+
+#ready:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0.5;
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    z-index: 1;
+}
+#ready.active{
+    visibility: visible;
+}
+#ready-header{
+    z-index: 9;
+}
+#ready-header h1{
+    padding: 0 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 52px;
+    text-shadow: 0 0 80px rgba(255,255,255,.5);
+    letter-spacing: 0;
+    background: url("../images/animated_text_fill.png") repeat-y;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+}
+
+@-webkit-keyframes aitf {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+#ready-header h1:first-letter{
+    color: var(--main);
+}
+#ready ul{
+    width: 900px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    z-index: 9;
+}
+#ready ul li {
+    font-size: 20px;
+    line-height: 30px;
+    transform: translateX(-1500px) rotate(20deg) scale(0.7);
+    animation: 0.5s ready forwards cubic-bezier(0.5, -0.2, 0.5, 1.2);
+}
+#ready ul li:nth-child(n + 7) {
+    transform: translateX(1500px) rotate(20deg) scale(0.7);
+}
+#ready ul li:first-child, #ready ul li:last-child{
+    animation-delay: 200ms;
+}
+#ready ul li:nth-child(2), #ready ul li:nth-child(12){
+    animation-delay: 300ms;
+}
+
+#ready ul li:nth-child(3), #ready ul li:nth-child(11){
+    animation-delay: 400ms;
+}
+
+#ready ul li:nth-child(4), #ready ul li:nth-child(10){
+    animation-delay: 500ms;
+}
+
+#ready ul li:nth-child(5), #ready ul li:nth-child(9){
+    animation-delay: 600ms;
+}
+#ready ul li:nth-child(6), #ready ul li:nth-child(8){
+    animation-delay: 700ms;
+}
+#ready ul li:nth-child(7){
+    animation-delay: 800ms;
+}
+#ready ul li:last-child{
+    font-size: 25px;
+}
+@keyframes ready {
+    50% {
+        transform: scale(0.7);
+    }
+    60% {
+        transform: scale(0.6);
+    }
+    90% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+/* start: button */
+
+.btn{
+    font-size: 1.25em;
+    padding: 20px 25px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: var(--light);
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-transform: uppercase;
+    z-index: 99;
+}
+.btn:disabled{
+    background: #9c9c9c;
+    cursor: not-allowed;
+}
+.btn:disabled:hover{
+    box-shadow: none
+}
+.btn:hover{
+    box-shadow: 0 0 80px rgba(255,255,255,.5);
+}
+/* end: button */
+
+/* start: button start game */
+#ready .btn.btn-start{
+    transform: translateY(400px);
+    animation: 0.5s reset forwards cubic-bezier(0.5, -0.2, 0.5, 1.2);
+    z-index: 9;
+}
+
+@keyframes reset {
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+/* end: button start game */
+
+/* start: state */
+#state{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    pointer-events: none;
+}
+#state > div{
+    position: absolute;
+}
+/* start: header top */
+#state .header-top{
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.header{
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    border-radius: 500px;
+    padding: 0 20px;
+}
+.header img{
+    height: 55px;
+}
+.stars, .timers{
+    display: flex;
+    align-items: center;
+}
+.stars > div:first-child{
+    background-image: url(../images/score.png);
+}
+.timers > div:last-child{
+    background-image: url(../images/timer.png);
+}
+.stars > div:first-child, .timers > div:last-child{
+    height: 50px;
+    width: 50px;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.font-control{
+    font-size: 1.5em;
+    background: #0f0c29;
+    min-width: 70px;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 10px;
+    color: #ffffff;
+    border-radius: 500px;
+}
+/* start: right-bar */
+#state .right-bar{
+    bottom: 10px;
+    right: 10px;
+}
+.bar{
+    width: 300px;
+    height: 40px;
+    background-color: #9c9c9c;
+    display: flex;
+    border-radius: 500px;
+    align-items: center;
+    color: #ffffff;
+    justify-content: flex-end;
+    font-size: 1.5em;
+    position: relative;
+    overflow: hidden;
+}
+.fill{
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+}
+.fill>.background{
+    width: 300px;
+    min-width: 300px;
+    height: 40px;
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FF0000, #FFF200, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FF0000, #FFF200, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+#fuels{
+    position: absolute;
+    right: 20px;
+}
+/* end: right-bar */
+
+/* end: state */
+
+
+/* start : game area */
+
+#game-area{
+    background-image: url("../images/bg.jpg");
+    background-size: 100% 100%;
+    visibility: hidden;
+    pointer-events: auto;
+}
+#game-area > div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
+#game-area.active{
+    visibility: visible;
+}
+/* start: planet */
+#background{
+    background-color: #0f0c2970;
+}
+#background > div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    animation: background  20s linear infinite;
+}
+@keyframes background {
+    100%{ transform: translateX(-1600px)}
+}
+/* planet */
+#background > div > div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+}
+.planet{
+    opacity: 0.6;
+    position: absolute;
+    background-size: 100% 100%;
+    animation: planet 2s linear infinite;
+}
+.bg-1 .planet{
+    background-image: url(../images/4x/planet@4x.png);
+    width: 200px;
+    height: 200px;
+    top: 100px;
+    left: 300px;
+}
+.bg-2 .planet{
+    background-image: url(../images/4x/planet_1@4x.png);
+    width: 300px;
+    height: 300px;
+    top: 300px;
+    left: 600px;
+}
+
+.bg-3 .planet{
+    background-image: url(../images/4x/planet_2@4x.png);
+    width: 250px;
+    height: 250px;
+    top: 700px;
+    left: 100px;
+}
+
+.bg-4 .planet{
+    background-image: url(../images/4x/planet_3@4x.png);
+    width: 120px;
+    height: 120px;
+    top: 100px;
+    left: 1300px;
+}
+.bg-5 .planet{
+    background-image: url(../images/4x/planet_4@4x.png);
+    width: 200px;
+    height: 200px;
+    top: 600px;
+    left: 1000px;
+}
+@keyframes planet {
+    100%{ transform: rotate(-360deg); }
+}
+/* end: planet */
+#elements{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 99;
+}
+#elements > div{
+    display: inline-block;
+    position: absolute;
+    z-index: 99;
+}
+/* start: aircraft */
+#aircraft{
+    top: 400px;
+    width: 200px;
+    height: 50px;
+    background: url(../images/4x/spaceship_1@4x.png);
+    background-size: 100% 100%;
+    animation: spaceship 0.4s linear infinite;
+}
+.bullet{
+    position: absolute;
+    width: 30px;
+    height: 5px;
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 100px;
+}
+.bullet.red{
+    background: #11998e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FF0000, #FFF200);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FF0000, #FFF200); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+/* end: aircraft */
+
+.score{
+    color: #38ef7d;  /* fallback for old browsers */
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    text-shadow: 0 0 3px #ffffff;
+    animation: 0.5s gone 0.5s forwards linear;
+}
+.score.red{
+    color: red;  /* fallback for old browsers */
+}
+
+/* start: pause game */
+#game-area.paused #background > div,
+#game-area.paused .planet,
+#game-area.paused #elements > div
+{
+    animation-play-state: paused;
+}
+/* end: pause game */
+.cent{
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/4x/cent_gold.png);
+    background-position: center;
+    background-size: cover;
+    animation: cent 0.8s steps(10) infinite;
+}
+@keyframes cent{
+    0%{
+        background-position: 390px;
+    }
+    100%{
+        background-position: 0;
+    }
+}
+
+.enemy, .friend{
+    width: 70px;
+    height: 40px;
+}
+.enemy{
+    background: url(../images/4x/enemy@4x.png);
+    background-size: 100% 100%;
+}
+
+.friend{
+    background: url(../images/4x/enemy_1@4x.png);
+    height: 60px;
+    background-size: 100% 100%;
+}
+
+.fuel{
+    width: 35px;
+    height: 50px;
+    background: url(../images/4x/fuel@4x.png);
+    background-size: 100% 100%;
+    animation: fuel 0.8s linear infinite;
+}
+.asteroid{
+    width: 50px;
+    height: 50px;
+    background-image: url(../images/4x/aestroid_1.png);
+    background-size: 100% 100%;
+    animation: asteroid 0.8s linear infinite;
+}
+.asteroid.shooted{    
+    background-image: url(../images/4x/aestroid_2.png);
+    background-size: 100% 100%;
+}
+@keyframes asteroid{
+    0%{
+        transform: scale(1.2);
+    }
+    50%{
+        transform: scale(0.8);
+    }
+    100%{
+        transform: scale(1.2);
+    }
+}
+@keyframes fuel {
+    0%{
+        transform: rotate(15deg);
+    }
+    25%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-15deg);
+    }
+    75%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(15deg);
+    }
+}
+.red-layer{
+    background: #ff000052;
+    animation: red-layer 0.8s linear infinite;
+    visibility: hidden;
+}
+.red-layer.active{
+    visibility: visible;
+}
+@keyframes red-layer {
+    100%{ opacity: 0 }
+
+}
+input#name{
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 2px;
+    font-size: 1.2em;
+}
+#over{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    visibility: hidden;
+    background: rgba(255,255,255,0.2);
+}
+#over.active{
+    visibility: visible;
+}
+#rank{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-direction: column;
+    background: rgba(255,255,255,0.2);
+    visibility: hidden;
+}
+#rank.active{
+    visibility: visible;
+}
+.table-responsive{
+    max-height: 500px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+table{
+    width: 500px;
+}
+table, th,td{
+    border: 2px solid #ffffff;
+    border-collapse: collapse;
+    text-align: center;
+}
+th,td{
+    padding: 10px 20px;
+}
+
+.table-responsive::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+}
+
+/* Track */
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #f98000;
+    cursor: grab;
+}
