@@ -1,0 +1,23 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:lts
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          apt-get install -y openssh-client
+          npm install -g netlify-cli
+      - name: Deploy
+        env:
+          TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+        run: netlify deploy --prod --dir ./ --site=combat-aircraft --auth=$TOKEN --timeout=600 --message "Deployed on $(date)"
